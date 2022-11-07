@@ -6,7 +6,7 @@ let celsius = (fahrenheit - 32) * (5/9);
 console.log(celsius);
 
 // calculate the kelvin value and store in variable
-let kelvin = (fahrenheit - 32)/1.8 + 273.15
+let kelvin = (fahrenheit - 32)/1.8 + 273.15;
 // print that value
 console.log(kelvin);
 
