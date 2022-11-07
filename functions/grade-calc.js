@@ -22,8 +22,8 @@ const lettergrade = function (percent){
 
 // function letter grade calculator
 const gradeCalc = function(score, total){
-    let percent = percentCalculator(score, total);
-    let grade = lettergrade(percent);
+    const percent = percentCalculator(score, total);
+    const grade = lettergrade(percent);
     return `You got a ${grade} (${percent}%)`
 }
 
