@@ -43,32 +43,51 @@ const todos = [
 // create function to remove to-do by text value
 
 todos.forEach((el, index) => {
-    todos[index] = {'text': el, 'completed': false}
+  todos[index] = { text: el, completed: false };
 });
 // console.log(todos);
 
 const removeFromArrayObjects = function (array, item) {
-    const index = array.findIndex((el) => {
-        return el.text.toLowerCase() === item.toLowerCase();
-    });
-    return index === -1 ? "To-do not found" : `${array.splice(index, 1)} were removed`
-}
+  const index = array.findIndex((el) => {
+    return el.text.toLowerCase() === item.toLowerCase();
+  });
+  return index === -1
+    ? "To-do not found"
+    : `${array.splice(index, 1)} were removed`;
+};
 
 // console.log(removeFromArrayObjects(todos, "study"));
 // console.log(todos);
 
 const getCompletedToDos = (array) => {
-    //iterate through array
-        //check each el completed value, if true, include in new array
-    return array.filter((el) => {
-        return el.completed === true;
-    });
-}
-
+  //iterate through array
+  //check each el completed value, if true, include in new array
+  return array.filter((el) => {
+    return el.completed === true;
+  });
+};
 
 // takes list
 // returns just completed to-do's
 todos[2].completed = true; // replant plants
 todos[0].completed = true; // study
 
-console.log(getCompletedToDos(todos)); 
+// console.log(getCompletedToDos(todos));
+
+const sortToDos = (array) => {
+  array.sort((a, b) => {
+    // console.log(a, b);
+    if (a.completed === true && b.completed === false) {
+      //   console.log("Swapped!");
+      return 1;
+    } else if (b.completed === true && a.completed === false) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return array;
+};
+
+// console.log(todos);
+console.log(sortToDos(todos));

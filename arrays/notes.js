@@ -23,6 +23,10 @@ const notes = [
     title: "Office modification",
     body: "Get a new seat",
   },
+  {
+    title: "A test for sorting",
+    body: "test test",
+  },
 ];
 
 // const findNote = function (notes, noteTitle) {
@@ -65,6 +69,17 @@ const findNotes = (notes, query) => {
   });
 };
 
-console.log(findNotes(notes, "ne"));
-console.log(findNotes(notes, "work"));
-console.log(findNotes(notes, "eating"));
+// console.log(findNotes(notes, "ne"));
+// console.log(findNotes(notes, "work"));
+// console.log(findNotes(notes, "eating"));
+
+const sortNotes = (notes) => {
+  notes.sort((a, b) => {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+  });
+  return notes;
+};
+
+console.log(sortNotes(notes));
