@@ -17,7 +17,7 @@ const notes = [
   },
   {
     title: "Habits to work on",
-    body: "I should exercise more",
+    body: "I should exercise more, Eating a bit better",
   },
   {
     title: "Office modification",
@@ -32,11 +32,39 @@ const notes = [
 //   return notes[index];
 // };
 
-const findNote = function (notes, noteTitle) {
-   return notes.find(function (note, index) {
-      return note.title.toLowerCase() === noteTitle.toLowerCase();
-    });
-  };
+// const findNote = function (notes, noteTitle) {
+//    return notes.find(function (note, index) {
+//       return note.title.toLowerCase() === noteTitle.toLowerCase();
+//     });
+//   };
 
-const note = findNote(notes, "OFfice modification");
-console.log(note);
+// const note = findNote(notes, "OFfice modification");
+// console.log(note);
+
+// const neArray = notes.filter((el, index) => {
+//   // iterate over each el obj
+//   for (const key in el) {
+//     // if value has "ne", return true
+//     if (el[key].toLowerCase().includes("ne")) return true;
+//   }
+//   //return false (post iteration, no "ne" found)
+//   return false;
+// });
+
+// console.log(neArray);
+
+const findNotes = (notes, query) => {
+  return notes.filter((el) => {
+    // iterate over each el obj
+    for (const key in el) {
+      // if value has "ne", return true
+      if (el[key].toLowerCase().includes(query.toLowerCase())) return true;
+    }
+    //return false (post iteration, no "ne" found)
+    return false;
+  });
+};
+
+console.log(findNotes(notes, "ne"));
+console.log(findNotes(notes, "work"));
+console.log(findNotes(notes, "eating"));

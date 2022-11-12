@@ -54,5 +54,21 @@ const removeFromArrayObjects = function (array, item) {
     return index === -1 ? "To-do not found" : `${array.splice(index, 1)} were removed`
 }
 
-console.log(removeFromArrayObjects(todos, "study"));
-console.log(todos);
+// console.log(removeFromArrayObjects(todos, "study"));
+// console.log(todos);
+
+const getCompletedToDos = (array) => {
+    //iterate through array
+        //check each el completed value, if true, include in new array
+    return array.filter((el) => {
+        return el.completed === true;
+    });
+}
+
+
+// takes list
+// returns just completed to-do's
+todos[2].completed = true; // replant plants
+todos[0].completed = true; // study
+
+console.log(getCompletedToDos(todos)); 
