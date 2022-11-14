@@ -17,24 +17,39 @@ const notes = [
   },
 ];
 
-const p = document.querySelector("p");
-console.log(p);
-// p.remove();
+// INITIAL DOM MANIPULATION PRACTICE
+// const p = document.querySelector("p");
+// console.log(p);
+// // p.remove();
 
-const allP = document.querySelectorAll("p");
+// const allP = document.querySelectorAll("p");
 
-allP.forEach((el) => {
-  //   el.remove();
-  //   console.log(el.textContent);
-  el.textContent = "********";
-});
+// allP.forEach((el) => {
+//   //   el.remove();
+//   //   console.log(el.textContent);
+//   el.textContent = "********";
+// });
 
-// Goal to add new p to bottom
-// Add new element
-// update it's content
-// Put it somewhere
+// // Goal to add new p to bottom
+// // Add new element
+// // update it's content
+// // Put it somewhere
 
-const newP = document.createElement("p");
-newP.textContent = "I'm the newest paragraph";
-// body.append(newP);
-document.querySelector("body").appendChild(newP);
+// const newP = document.createElement("p");
+// newP.textContent = "I'm the newest paragraph";
+// // body.append(newP);
+// document.querySelector("body").appendChild(newP);
+
+const newNote = document
+  .querySelector(".note-submit")
+  .addEventListener("click", function (e) {
+    // console.log("Did this work?");
+
+    // Attempt to add text written in field to textContent of new paragraph in html
+    // const newPar = document.createElement("p");
+    // newPar.textContent = document.querySelector(".note").textContent;
+    // console.log(document.querySelector(".note").textContent);
+    // document.querySelector("body").appendChild(newPar);
+
+    e.target.textContent = "Button has been clicked";
+  });
