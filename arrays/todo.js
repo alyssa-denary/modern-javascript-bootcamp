@@ -45,7 +45,7 @@ const todos = [
 todos.forEach((el, index) => {
   todos[index] = { text: el, completed: false };
 });
-// console.log(todos);
+console.log(todos);
 
 const removeFromArrayObjects = function (array, item) {
   const index = array.findIndex((el) => {
