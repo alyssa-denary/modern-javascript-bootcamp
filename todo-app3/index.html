@@ -4,25 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-do App2</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>To-do App3</title>
   </head>
   <body>
     <h1>To-do's:</h1>
-    <form>
-      <input
-        id="create-to-do"
-        type="text"
-        placeholder="Type To-Do task"
-        required
-      />
-      <button id="to-do-button">Add To-Do</button>
+    <!--To add feature of user ability to type and add new to-do item, for now, hidden on page-->
+    <form id="new-to-do-form">
+      <input id="create-to-do" type="text" placeholder="Enter task" required />
+      <button id="submit-new-to-do">Add To-Do</button>
     </form>
     <form>
-      <p>
-        Search To-Do Items:
-        <input id="" type="text" placeholder="Type text to search" />
-      </p>
+      <p>Search To-Do Items:</p>
+      <input id="search-input" type="text" placeholder="Type text to search" />
+      <fieldset>
+        <p>Show tasks that are:</p>
+        <label
+          ><input
+            id="not-completed"
+            type="checkbox"
+            name="task-completion"
+            value="not-completed"
+            checked
+          />Not Completed</label
+        >
+        <label
+          ><input
+            id="completed"
+            type="checkbox"
+            name="task-completion"
+            value="completed"
+            checked
+          />Completed</label
+        >
+      </fieldset>
     </form>
+    <section id="all-todos"></section>
     <script src="script.js"></script>
   </body>
 </html>

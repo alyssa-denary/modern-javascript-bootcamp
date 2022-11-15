@@ -6,36 +6,88 @@ const todos = [
   { text: "replant plants", completed: true },
 ];
 
-const uncompletedToDo = todos.filter((obj) => {
-  return obj.completed === false;
-});
-console.log(uncompletedToDo);
-// print summary of num left
-const summary = `You have ${uncompletedToDo.length} To-Do's left.`;
-const sumHeading = document.createElement("h2");
-sumHeading.textContent = summary;
-document.querySelector("body").appendChild(sumHeading);
+// have variable that updates with user input
+const userInput = {
+  newTask: "",
+  searchText: "",
+  notCompleted: true,
+  completed: true,
+};
 
-// Add paragraph element for each uncompleted to-do
-uncompletedToDo.forEach((todoObj) => {
-  // creating element
-  const todoElement = document.createElement("p");
-  // updating text of that element to be the value of text property
-  todoElement.textContent = todoObj.text;
-  // appending this element to the body
-  document.querySelector("body").appendChild(todoElement);
-});
+// Render current items
+renderToDoItems(todos);
 
-// add button to add to-do
-// listen for click
-// print message to console
-
-document.querySelector("#to-do-button").addEventListener("click", (e) => {
-  console.log("To-Do button has been clicked");
+// Listener for search text changes:
+document.querySelector("#search-input").addEventListener("input", function (e) {
+  userInput.searchText = e.target.value;
+  removeToDos("#all-todos");
+  const filtered = filterToDo(
+    todos,
+    userInput.searchText,
+    userInput.notCompleted,
+    userInput.completed
+  );
+  renderToDoItems(filtered);
 });
 
+// Listener for changes to not completed checkbox:
+document
+  .querySelector("#not-completed")
+  .addEventListener("click", function (e) {
+    userInput.notCompleted = !userInput.notCompleted;
+    removeToDos("#all-todos");
+    const filtered = filterToDo(
+      todos,
+      userInput.searchText,
+      userInput.notCompleted,
+      userInput.completed
+    );
+    renderToDoItems(filtered);
+  });
+
+// Listener for changes to completed checkbox:
+document.querySelector("#completed").addEventListener("click", function (e) {
+  userInput.completed = !userInput.completed;
+  removeToDos("#all-todos");
+  const filtered = filterToDo(
+    todos,
+    userInput.searchText,
+    userInput.notCompleted,
+    userInput.completed
+  );
+  renderToDoItems(filtered);
+});
+
+// get current state of new task input
 document.querySelector("#create-to-do").addEventListener("input", function (e) {
-  console.log(e.target.value);
+  userInput.newTask = e.target.value;
 });
 
+// on click of button, adds new to-do item to page
+document.querySelector("")
 
+///////  HELPER FUNCTIONS /////////
+
+// function that filters to-do items based on user input variable
+function filterToDo(arrOfObj, textFilter, notComplete, complete) {
+  return arrOfObj.filter((obj) => {
+    return (
+      obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
+      (obj.completed === complete || !obj.completed === notComplete)
+    );
+  });
+}
+
+// function that renders content to DOM
+function renderToDoItems(arrOfObj) {
+  arrOfObj.forEach((obj) => {
+    const newTaskPar = document.createElement("p");
+    newTaskPar.textContent = obj.text;
+    document.querySelector("#all-todos").appendChild(newTaskPar);
+  });
+}
+
+// function that removes all to-do items
+function removeToDos(selector) {
+  document.querySelector("#all-todos").innerHTML = "";
+}
