@@ -30,6 +30,10 @@ uncompletedToDo.forEach((todoObj) => {
 // listen for click
 // print message to console
 
-document.querySelector("#create-to-do").addEventListener("click", (e) => {
+document.querySelector("#to-do-button").addEventListener("click", (e) => {
   console.log("To-Do button has been clicked");
+});
+
+document.querySelector("#create-to-do").addEventListener("input", function (e) {
+  console.log(e.target.value);
 });
