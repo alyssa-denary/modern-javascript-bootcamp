@@ -46,8 +46,10 @@ document.querySelector("#remove-button").addEventListener("click", (e) => {
 function filterNotes(arrOfObj, filterObj) {
   return arrOfObj.filter((noteObj) => {
     return (
-      noteObj.title.includes(filterObj.searchText) ||
-      noteObj.body.includes(filterObj.searchText)
+      noteObj.title
+        .toLowerCase()
+        .includes(filterObj.searchText.toLowerCase()) ||
+      noteObj.body.toLowerCase().includes(filterObj.searchText.toLowerCase())
     );
   });
 }
