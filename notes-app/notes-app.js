@@ -44,18 +44,15 @@ const newNote = document
   .querySelector(".note-submit")
   .addEventListener("click", function (e) {
     // console.log("Did this work?");
-
-    // Attempt to add text written in field to textContent of new paragraph in html
-    // const newPar = document.createElement("p");
-    // newPar.textContent = document.querySelector(".note").textContent;
-    // console.log(document.querySelector(".note").textContent);
-    // document.querySelector("body").appendChild(newPar);
-
-    e.target.textContent = "Button has been clicked";
+    // e.target.textContent = "Button has been clicked";
   });
 
 document.querySelector("#remove-button").addEventListener("click", (e) => {
   document.querySelectorAll(".note").forEach((note) => {
     note.remove();
   });
+});
+
+document.querySelector("#note-input").addEventListener("change", function (e) {
+  console.log(e.target.value);
 });
