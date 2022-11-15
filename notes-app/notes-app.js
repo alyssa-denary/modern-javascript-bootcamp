@@ -53,3 +53,9 @@ const newNote = document
 
     e.target.textContent = "Button has been clicked";
   });
+
+document.querySelector("#remove-button").addEventListener("click", (e) => {
+  document.querySelectorAll(".note").forEach((note) => {
+    note.remove();
+  });
+});
