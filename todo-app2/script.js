@@ -25,3 +25,11 @@ uncompletedToDo.forEach((todoObj) => {
   // appending this element to the body
   document.querySelector("body").appendChild(todoElement);
 });
+
+// add button to add to-do
+// listen for click
+// print message to console
+
+document.querySelector("#create-to-do").addEventListener("click", (e) => {
+  console.log("To-Do button has been clicked");
+});
