@@ -58,12 +58,12 @@ document.querySelector("#completed").addEventListener("click", function (e) {
   renderToDoItems(filtered);
 });
 
-// get current state of new task input
+// Listener for create to-do text changes
 document.querySelector("#create-to-do").addEventListener("input", function (e) {
   userInput.newTask = e.target.value;
 });
 
-// on click of button, adds new to-do item to page
+// Listener for Add to-do button to "submit" to-do
 document
   .querySelector("#submit-new-to-do")
   .addEventListener("click", function (e) {
