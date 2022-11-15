@@ -36,7 +36,7 @@ document.querySelector("#filter-notes").addEventListener("input", function (e) {
 
 // Remove button removes all notes
 document.querySelector("#remove-button").addEventListener("click", (e) => {
-  removeAllNotes(".note");
+  clearSection("#all-notes");
 });
 
 //////    HELPER FUNCTIONS ///////
@@ -61,7 +61,7 @@ function renderNote(arrOfObj) {
     const newPar = document.createElement("p");
     newPar.textContent = `${obj.title}: ${obj.body}`;
     newPar.className = "note";
-    document.querySelector("body").appendChild(newPar);
+    document.querySelector("#all-notes").appendChild(newPar);
   }
 }
 
@@ -69,4 +69,8 @@ function removeAllNotes(selector) {
   document.querySelectorAll(selector).forEach((note) => {
     note.remove();
   });
+}
+
+function clearSection(selector) {
+  document.querySelector(selector).innerHTML = "";
 }
