@@ -64,7 +64,13 @@ document.querySelector("#create-to-do").addEventListener("input", function (e) {
 });
 
 // on click of button, adds new to-do item to page
-document.querySelector("")
+document
+  .querySelector("#submit-new-to-do")
+  .addEventListener("click", function (e) {
+    const newToDoObj = { text: userInput.newTask, completed: false };
+    todos.push(newToDoObj);
+    renderToDoItems([newToDoObj]);
+  });
 
 ///////  HELPER FUNCTIONS /////////
 
