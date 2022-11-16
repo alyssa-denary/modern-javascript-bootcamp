@@ -17,39 +17,42 @@ const notes = [
   },
 ];
 
-// Create filter object to update whenever input value changes
-const filter = {
-  searchText: "",
-};
-
 // Render all notes to start
 renderNote(notes);
 
 // Each time input changes, remove all notes and just show new rendered items
 // Get current state of search input and update filter
 // Render just the notes that match that filter
-document.querySelector("#filter-notes").addEventListener("input", function (e) {
-  removeAllNotes(".note");
-  filter.searchText = e.target.value;
-  renderNote(filterNotes(notes, filter));
-});
+document
+  .querySelector("#search-form label input")
+  .addEventListener("input", function (e) {
+    removeAllNotes(".note");
+    renderNote(filterNotes(notes, e.target.value));
+  });
 
-// Remove button removes all notes
-document.querySelector("#remove-button").addEventListener("click", (e) => {
-  clearSection("#all-notes");
-});
+document
+  .querySelector("#create-note-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    renderNote([
+      {
+        title: e.target.elements.title.value,
+        body: e.target.elements.body.value,
+      },
+    ]);
+    e.target.elements.title.value = "";
+    body: e.target.elements.body.value = "";
+  });
 
 //////    HELPER FUNCTIONS ///////
 
 // Create function to filter notes: render to-do items to document:
 // input: notes, filters, output: array of objects of filtered notes
-function filterNotes(arrOfObj, filterObj) {
+function filterNotes(arrOfObj, string) {
   return arrOfObj.filter((noteObj) => {
     return (
-      noteObj.title
-        .toLowerCase()
-        .includes(filterObj.searchText.toLowerCase()) ||
-      noteObj.body.toLowerCase().includes(filterObj.searchText.toLowerCase())
+      noteObj.title.toLowerCase().includes(string.toLowerCase()) ||
+      noteObj.body.toLowerCase().includes(string.toLowerCase())
     );
   });
 }
