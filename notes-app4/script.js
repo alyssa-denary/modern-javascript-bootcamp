@@ -34,14 +34,16 @@ document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    renderNote([
+    const newNote = [
       {
         title: e.target.elements.title.value,
         body: e.target.elements.body.value,
       },
-    ]);
+    ];
+    notes.push(newNote[0]);
+    renderNote(newNote);
     e.target.elements.title.value = "";
-    body: e.target.elements.body.value = "";
+    e.target.elements.body.value = "";
   });
 
 //////    HELPER FUNCTIONS ///////
