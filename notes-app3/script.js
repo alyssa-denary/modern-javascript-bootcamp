@@ -17,9 +17,6 @@ const notes = [
   },
 ];
 
-// Create filter object to update whenever input value changes
-let userSearch = "";
-
 // Render all notes to start
 renderNote(notes);
 
@@ -28,8 +25,7 @@ renderNote(notes);
 // Render just the notes that match that filter
 document.querySelector("#filter-notes").addEventListener("input", function (e) {
   removeAllNotes(".note");
-  userSearch = e.target.value;
-  renderNote(filterNotes(notes, userSearch));
+  renderNote(filterNotes(notes, e.target.value));
 });
 
 // Remove button removes all notes
