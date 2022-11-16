@@ -8,21 +8,6 @@
   </head>
   <body>
     <h1>Notes App 4</h1>
-    <form id="create-note-form">
-      <input
-        type="text"
-        placeholder="Title of note"
-        name="title"
-        required
-      />
-      <input
-      type="text"
-      placeholder="Write note here"
-      name="body"
-      required
-    />
-      <button type="submit">Create note</button>
-    </form>
     <form id="search-form">
       <label>
         Search notes:
@@ -34,6 +19,11 @@
       </label>
     </form>
     <section id="all-notes"></section>
+    <form id="create-note-form">
+      <input type="text" placeholder="Title of note" name="title" required />
+      <input type="text" placeholder="Write note here" name="body" required />
+      <button type="submit">Create note</button>
+    </form>
     <script src="script.js"></script>
   </body>
 </html>
