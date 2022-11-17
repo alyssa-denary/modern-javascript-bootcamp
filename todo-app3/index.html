@@ -9,13 +9,15 @@
   </head>
   <body>
     <h1>To-do's:</h1>
-    <form id="new-to-do-form">
-      <input id="create-to-do" type="text" placeholder="Enter task" required />
-      <button id="submit-new-to-do">Add To-Do</button>
-    </form>
     <form>
-      <p>Search To-Do Items:</p>
-      <input id="search-input" type="text" placeholder="Type text to search" />
+      <label
+        >Search To-Do Items:
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Type text to search"
+        />
+      </label>
       <fieldset>
         <p>Show tasks that are:</p>
         <label
@@ -39,6 +41,16 @@
       </fieldset>
     </form>
     <section id="all-todos"></section>
+    <form id="new-to-do-form">
+      <input
+        id="create-to-do"
+        type="text"
+        placeholder="Enter task"
+        name="newToDo"
+        required
+      />
+      <button id="submit-new-to-do">Add To-Do</button>
+    </form>
     <script src="script.js"></script>
   </body>
 </html>
