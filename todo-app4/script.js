@@ -10,8 +10,7 @@ const todos = [
 const userInput = {
   newTask: "",
   searchText: "",
-  notCompleted: true,
-  completed: true,
+  showCompleted: true,
 };
 
 // Render current items
@@ -24,64 +23,53 @@ document.querySelector("#search-input").addEventListener("input", function (e) {
   const filtered = filterToDo(
     todos,
     userInput.searchText,
-    userInput.notCompleted,
-    userInput.completed
+    userInput.showCompleted
   );
   renderToDoItems(filtered);
 });
 
-// Listener for changes to not completed checkbox:
+// Listener for changes to hiding completed checkbox:
 document
-  .querySelector("#not-completed")
+  .querySelector("#hide-completed")
   .addEventListener("click", function (e) {
-    userInput.notCompleted = !userInput.notCompleted;
+    userInput.showCompleted = !userInput.showCompleted;
     removeToDos("#all-todos");
     const filtered = filterToDo(
       todos,
       userInput.searchText,
-      userInput.notCompleted,
-      userInput.completed
+      userInput.showCompleted
     );
     renderToDoItems(filtered);
   });
-
-// Listener for changes to completed checkbox:
-document.querySelector("#completed").addEventListener("click", function (e) {
-  userInput.completed = !userInput.completed;
-  removeToDos("#all-todos");
-  const filtered = filterToDo(
-    todos,
-    userInput.searchText,
-    userInput.notCompleted,
-    userInput.completed
-  );
-  renderToDoItems(filtered);
-});
 
 // Listener for create to-do text changes
 document.querySelector("#create-to-do").addEventListener("input", function (e) {
   userInput.newTask = e.target.value;
 });
 
-// Listener for Add to-do button to "submit" to-do
+// Listener for submit button to add a new to-do
 document
-  .querySelector("#submit-new-to-do")
-  .addEventListener("click", function (e) {
-    const newToDoObj = { text: userInput.newTask, completed: false };
-    todos.push(newToDoObj);
+  .querySelector("#new-to-do-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    const newToDoObj = {
+      text: e.target.elements.newToDo.value,
+      completed: false,
+    };
     renderToDoItems([newToDoObj]);
+    e.target.elements.newToDo.value = "";
   });
 
 ///////  HELPER FUNCTIONS /////////
 
 // function that filters to-do items based on user input variable
-function filterToDo(arrOfObj, textFilter, notComplete, complete) {
-  return arrOfObj.filter((obj) => {
-    return (
-      obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
-      (obj.completed === complete || !obj.completed === notComplete)
-    );
-  });
+function filterToDo(arrOfObj, textFilter, showCompletedVal) {
+  return arrOfObj.filter((obj) =>
+    showCompletedVal
+      ? obj.text.toLowerCase().includes(textFilter.toLowerCase())
+      : obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
+        obj.completed === false
+  );
 }
 
 // function that renders content to DOM
