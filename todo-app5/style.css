@@ -1,0 +1,13 @@
+fieldset {
+  border: none;
+  display: flex;
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+#new-to-do-form {
+  /* display: none; */
+}
