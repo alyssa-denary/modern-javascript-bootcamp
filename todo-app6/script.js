@@ -114,3 +114,24 @@ function renderSummary(array) {
 function removeToDos(selector) {
   document.querySelector("#all-todos").innerHTML = "";
 }
+
+// Alternative Optimization rendering 1
+function renderTodos1(todos, userInput) {
+  let filteredTodos = todos.filter((el) =>
+    el.text.toLowerCase().includes(textFilter.toLowerCase())
+  );
+  filteredTodos = filteredTodos.filter(
+    (el) => !userInput.hideCompleted || !el.completed // consenses the if/else to filter true if either hideCompleted is false, or the todo element is not completed.
+  );
+}
+
+// Alternative Optimization rendering 2
+function renderTodos2(todos, userInput) {
+  const filteredTodos = todos.filter((el) => {
+    const searchTextMatch = el.text
+      .toLowerCase()
+      .includes(textFilter.toLowerCase());
+    const hideCompletedMatch = !userInput.hideCompleted || !el.completed;
+    return searchTextMatch && hideCompletedMatch; // consenses the above two filter calls into one, filtering for both searchText and hideCompleted.
+  });
+}
