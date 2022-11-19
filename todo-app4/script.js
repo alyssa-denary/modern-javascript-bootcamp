@@ -38,7 +38,7 @@ document.querySelector("#search-input").addEventListener("input", function (e) {
 // Listener for changes to hiding completed checkbox:
 document
   .querySelector("#hide-completed")
-  .addEventListener("click", function (e) {
+  .addEventListener("change", function (e) {
     userInput.showCompleted = !userInput.showCompleted;
     removeToDos("#all-todos");
     const filtered = filterToDo(
