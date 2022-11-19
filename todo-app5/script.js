@@ -10,44 +10,38 @@ const todos = [
 const userInput = {
   newTask: "",
   searchText: "",
-  showCompleted: true,
+  hideCompleted: false,
 };
 
-//Render summary
-renderSummary(findNumUncompleted(todos));
+// Render summary
+// renderSummary(findNumUncompleted(todos));
+
+// Alternative summary
+// const incompleteTodos = todos.filter((el) => !el.completed);
+// const summary = document.createElement("h2");
+// summary.textContent = `YOU have ${incompleteTodos.length} to-do's left`;
+// document.querySelector("body").appendChild(summary);
 
 // Render current items
-renderToDoItems(todos);
+// renderToDoItems(todos);
+
+// Alternative render:
+filterAndRenderWithSummary(todos);
 
 // Listener for search text changes:
 document.querySelector("#search-input").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
   removeToDos("#all-todos");
-  const filtered = filterToDo(
-    todos,
-    userInput.searchText,
-    userInput.showCompleted
-  );
-  renderToDoItems(filtered);
-  document.querySelector(
-    "#heading-todo-left"
-  ).textContent = `You have ${findNumUncompleted(todos)} left`;
-  document.querySelector("#todo-left").appendChild(summary);
+  filterAndRenderWithSummary(todos);
 });
 
 // Listener for changes to hiding completed checkbox:
 document
   .querySelector("#hide-completed")
   .addEventListener("change", function (e) {
-    userInput.showCompleted = !userInput.showCompleted;
+    userInput.hideCompleted = !userInput.hideCompleted;
     removeToDos("#all-todos");
-    const filtered = filterToDo(
-      todos,
-      userInput.searchText,
-      userInput.showCompleted
-    );
-    renderToDoItems(filtered);
-    renderSummary(findNumUncompleted(todos));
+    filterAndRenderWithSummary(todos);
   });
 
 // // Listener for create to-do text changes
@@ -66,21 +60,21 @@ document
         completed: false,
       },
     ];
-    renderToDoItems(newToDoObj);
     todos.push(newToDoObj[0]);
+    removeToDos("all-todos");
+    filterAndRenderWithSummary(todos);
     e.target.elements.newToDo.value = "";
-    renderSummary(findNumUncompleted(todos));
   });
 
 ///////  HELPER FUNCTIONS /////////
 
 // function that filters to-do items based on user input variable
-function filterToDo(arrOfObj, textFilter, showCompletedVal) {
+function filterToDo(arrOfObj, textFilter, hideVal) {
   return arrOfObj.filter((obj) =>
-    showCompletedVal
-      ? obj.text.toLowerCase().includes(textFilter.toLowerCase())
-      : obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
+    hideVal
+      ? obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
         obj.completed === false
+      : obj.text.toLowerCase().includes(textFilter.toLowerCase())
   );
 }
 
@@ -98,11 +92,22 @@ function renderToDoItems(arrOfObj) {
   });
 }
 
+// Alternative render with summary updating to only those incomplete and changes with searched
+function filterAndRenderWithSummary(arrOfObj) {
+  const filtered = filterToDo(
+    arrOfObj,
+    userInput.searchText,
+    userInput.hideCompleted
+  );
+  renderSummary(filtered);
+  renderToDoItems(filtered);
+}
+
 // function that renders summary to DOM
-function renderSummary(num) {
-  document.querySelector(
-    "#heading-todo-left"
-  ).textContent = `You have ${num} to-do's left`;
+function renderSummary(array) {
+  const summary = document.createElement("h2");
+  summary.textContent = `You have ${array.length} to-do's left`;
+  document.querySelector("#all-todos").appendChild(summary);
 }
 
 // function that removes all to-do items
