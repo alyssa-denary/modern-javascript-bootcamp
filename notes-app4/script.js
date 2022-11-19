@@ -20,16 +20,13 @@ const notes = [
 // Render all notes to start
 renderNote(notes);
 
-// Each time input changes, remove all notes and just show new rendered items
-// Get current state of search input and update filter
-// Render just the notes that match that filter
-document
-  .querySelector("#search-form label input")
-  .addEventListener("input", function (e) {
-    removeAllNotes(".note");
-    renderNote(filterNotes(notes, e.target.value));
-  });
+// Search form Listener
+document.querySelector("#search-form").addEventListener("input", function (e) {
+  removeAllNotes(".note");
+  renderNote(filterNotes(notes, e.target.value));
+});
 
+// Create new note submit listener
 document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {
@@ -45,6 +42,9 @@ document
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
   });
+
+// Dropdown listener
+document.querySelector("")
 
 //////    HELPER FUNCTIONS ///////
 
