@@ -13,18 +13,6 @@ const userInput = {
   hideCompleted: false,
 };
 
-// Render summary
-// renderSummary(findNumUncompleted(todos));
-
-// Alternative summary
-// const incompleteTodos = todos.filter((el) => !el.completed);
-// const summary = document.createElement("h2");
-// summary.textContent = `YOU have ${incompleteTodos.length} to-do's left`;
-// document.querySelector("body").appendChild(summary);
-
-// Render current items
-// renderToDoItems(todos);
-
 // Alternative render:
 filterAndRenderWithSummary(todos);
 
@@ -43,11 +31,6 @@ document
     removeToDos("#all-todos");
     filterAndRenderWithSummary(todos);
   });
-
-// // Listener for create to-do text changes
-// document.querySelector("#create-to-do").addEventListener("input", function (e) {
-//   userInput.newTask = e.target.value;
-// });
 
 // Listener for submit button to add a new to-do
 document
