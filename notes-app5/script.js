@@ -6,13 +6,12 @@ if (notesJSON !== null) {
   notes = JSON.parse(notesJSON);
 }
 
-
 // Render all notes to start
 renderNote(notes);
 
 // Search form Listener
 document.querySelector("#search-form").addEventListener("input", function (e) {
-  removeAllNotes(".note");
+  clearSection("#all-notes");
   renderNote(filterNotes(notes, e.target.value));
 });
 
@@ -21,15 +20,14 @@ document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    const newNote = [
-      {
-        title: e.target.elements.title.value,
-        body: e.target.elements.body.value,
-      },
-    ];
-    notes.push(newNote[0]);
+    const newNote = {
+      title: e.target.elements.title.value,
+      body: e.target.elements.body.value,
+    };
+    notes.push(newNote);
     localStorage.setItem("notes", JSON.stringify(notes));
-    renderNote(newNote);
+    clearSection("#all-notes");
+    renderNote(notes);
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
   });
