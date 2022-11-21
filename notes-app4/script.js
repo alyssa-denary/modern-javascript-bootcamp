@@ -11,10 +11,6 @@ const notes = [
     title: "Office modification",
     body: "Get a new seat",
   },
-  {
-    title: "A test for sorting",
-    body: "test test",
-  },
 ];
 
 // Render all notes to start
@@ -22,7 +18,7 @@ renderNote(notes);
 
 // Search form Listener
 document.querySelector("#search-form").addEventListener("input", function (e) {
-  removeAllNotes(".note");
+  removeAllNotes("#all-notes");
   renderNote(filterNotes(notes, e.target.value));
 });
 
@@ -31,20 +27,18 @@ document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    const newNote = [
-      {
-        title: e.target.elements.title.value,
-        body: e.target.elements.body.value,
-      },
-    ];
-    notes.push(newNote[0]);
-    renderNote(newNote);
+    const newNote = {
+      title: e.target.elements.title.value,
+      body: e.target.elements.body.value,
+    };
+    notes.push(newNote);
+    renderNote(notes);
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
   });
 
 // Dropdown listener
-document.querySelector("")
+document.querySelector("");
 
 //////    HELPER FUNCTIONS ///////
 
@@ -71,9 +65,7 @@ function renderNote(arrOfObj) {
 }
 
 function removeAllNotes(selector) {
-  document.querySelectorAll(selector).forEach((note) => {
-    note.remove();
-  });
+  document.querySelector(selector).innerHTML = "";
 }
 
 function clearSection(selector) {
