@@ -1,26 +1,25 @@
-let todos = [];
+// Retrieve saved todos
+const todos = getSavedTodos();
 
-// have variable that updates with user input
+// Variable to hold user input
 const userInput = {
   newTask: "",
   searchText: "",
   hideCompleted: false,
 };
 
-// Check for existing saved data
-const todosJSON = localStorage.getItem("todos");
-if (todosJSON !== null) {
-  todos = JSON.parse(todosJSON);
-}
-
-// Alternative render:
-filterAndRenderWithSummary(todos);
+// Render initial todos
+let filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+renderSummary(filtered);
+renderToDoItems(filtered);
 
 // Listener for search text changes:
 document.querySelector("#search-input").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
   clearSection("#all-todos");
-  filterAndRenderWithSummary(todos);
+  filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+  renderSummary(filtered);
+  renderToDoItems(filtered);
 });
 
 // Listener for changes to hiding completed checkbox:
@@ -29,7 +28,9 @@ document
   .addEventListener("change", function (e) {
     userInput.hideCompleted = !userInput.hideCompleted;
     clearSection("#all-todos");
-    filterAndRenderWithSummary(todos);
+    filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+    renderSummary(filtered);
+    renderToDoItems(filtered);
   });
 
 // Listener for submit button to add a new to-do
@@ -37,15 +38,15 @@ document
   .querySelector("#new-to-do-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    const newToDoObj = [
-      {
-        text: e.target.elements.newToDo.value,
-        completed: false,
-      },
-    ];
-    todos.push(newToDoObj[0]);
-    localStorage.setItem("todos", JSON.stringify(todos));
-    clearSection("all-todos");
-    filterAndRenderWithSummary(todos);
+    const newToDoObj = {
+      text: e.target.elements.newToDo.value,
+      completed: false,
+    };
+    todos.push(newToDoObj);
+    saveTodos(todos);
+    clearSection("#all-todos");
+    filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+    renderSummary(filtered);
+    renderToDoItems(filtered);
     e.target.elements.newToDo.value = "";
   });
