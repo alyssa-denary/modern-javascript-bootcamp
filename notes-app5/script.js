@@ -1,24 +1,18 @@
-const notes = [
-  {
-    title: "My next trip",
-    body: "I would like to go to spain",
-  },
-  {
-    title: "Habits to work on",
-    body: "I should exercise more, Eating a bit better",
-  },
-  {
-    title: "Office modification",
-    body: "Get a new seat",
-  },
-];
+let notes = [];
+
+// Check for existing saved data
+const notesJSON = localStorage.getItem("notes");
+if (notesJSON !== null) {
+  notes = JSON.parse(notesJSON);
+}
+
 
 // Render all notes to start
 renderNote(notes);
 
 // Search form Listener
 document.querySelector("#search-form").addEventListener("input", function (e) {
-  clearSection("#all-notes");
+  removeAllNotes(".note");
   renderNote(filterNotes(notes, e.target.value));
 });
 
@@ -27,13 +21,15 @@ document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    const newNote = {
-      title: e.target.elements.title.value,
-      body: e.target.elements.body.value,
-    };
-    notes.push(newNote);
-    clearSection("#all-notes");
-    renderNote(notes);
+    const newNote = [
+      {
+        title: e.target.elements.title.value,
+        body: e.target.elements.body.value,
+      },
+    ];
+    notes.push(newNote[0]);
+    localStorage.setItem("notes", JSON.stringify(notes));
+    renderNote(newNote);
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
   });
