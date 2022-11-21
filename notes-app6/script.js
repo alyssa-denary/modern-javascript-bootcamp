@@ -19,7 +19,7 @@ document
       body: e.target.elements.body.value,
     };
     notes.push(newNote);
-    localStorage.setItem("notes", JSON.stringify(notes));
+    saveNote(notes);
     clearSection("#all-notes");
     renderNote(notes);
     e.target.elements.title.value = "";
