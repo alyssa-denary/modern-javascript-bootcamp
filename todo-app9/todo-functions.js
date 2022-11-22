@@ -25,9 +25,17 @@ function filterToDo(arrOfObj, textFilter, hideVal) {
 
 // Generate todo DOM
 const generateTodoDOM = function (obj) {
-  const newTaskPar = document.createElement("p");
-  newTaskPar.textContent = obj.text;
-  document.querySelector("#all-todos").appendChild(newTaskPar);
+  const newTask = document.createElement("li");
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  const button = document.createElement("button");
+  button.textContent = "X";
+  newTask.appendChild(checkbox);
+  newTask.append(obj.text);
+  newTask.appendChild(button);
+  // debugger;
+  // newTask.textContent = `${checkbox} ${obj.text} ${button}`;
+  document.querySelector("#todo-list").appendChild(newTask);
 };
 
 // Render content to DOM
@@ -39,12 +47,10 @@ function renderToDoItems(arrOfObj) {
 
 // Renders summary to DOM
 function renderSummary(array) {
-  const summary = document.createElement("h2");
-  summary.textContent = `You have ${array.length} to-do's left`;
-  document.querySelector("#all-todos").appendChild(summary);
+  document.querySelector("#summary").textContent = `You have ${array.length} to-do's left`;
 }
 
 // Removes all elements from a section
 function clearSection(selector) {
-  document.querySelector("#all-todos").innerHTML = "";
+  document.querySelector(selector).innerHTML = "";
 }

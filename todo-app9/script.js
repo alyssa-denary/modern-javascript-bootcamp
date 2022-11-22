@@ -16,7 +16,7 @@ renderToDoItems(filtered);
 // Listener for search text changes:
 document.querySelector("#search-input").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
-  clearSection("#all-todos");
+  clearSection("#todo-list");
   filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
   renderSummary(filtered);
   renderToDoItems(filtered);
@@ -27,7 +27,7 @@ document
   .querySelector("#hide-completed")
   .addEventListener("change", function (e) {
     userInput.hideCompleted = !userInput.hideCompleted;
-    clearSection("#all-todos");
+    clearSection("#todo-list");
     filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
     renderSummary(filtered);
     renderToDoItems(filtered);
@@ -44,7 +44,7 @@ document
     };
     todos.push(newToDoObj);
     saveTodos(todos);
-    clearSection("#all-todos");
+    clearSection("#todo-list");
     filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
     renderSummary(filtered);
     renderToDoItems(filtered);
