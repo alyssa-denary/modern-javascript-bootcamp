@@ -1,0 +1,9 @@
+fieldset {
+  border: none;
+  display: flex;
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
