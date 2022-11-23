@@ -47,7 +47,9 @@ function renderToDoItems(arrOfObj) {
 
 // Renders summary to DOM
 function renderSummary(array) {
-  document.querySelector("#summary").textContent = `You have ${array.length} to-do's left`;
+  document.querySelector(
+    "#summary"
+  ).textContent = `You have ${array.length} to-do's left`;
 }
 
 // Removes all elements from a section
