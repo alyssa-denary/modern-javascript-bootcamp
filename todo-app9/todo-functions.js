@@ -26,15 +26,20 @@ function filterToDo(arrOfObj, textFilter, hideVal) {
 // Generate todo DOM
 const generateTodoDOM = function (obj) {
   const newTask = document.createElement("li");
+
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+
   const button = document.createElement("button");
   button.textContent = "X";
+  button.addEventListener("click", () => {
+    removeToDos(obj.id);
+  });
+
   newTask.appendChild(checkbox);
   newTask.append(obj.text);
   newTask.appendChild(button);
-  // debugger;
-  // newTask.textContent = `${checkbox} ${obj.text} ${button}`;
+
   document.querySelector("#todo-list").appendChild(newTask);
 };
 
@@ -56,3 +61,6 @@ function renderSummary(array) {
 function clearSection(selector) {
   document.querySelector(selector).innerHTML = "";
 }
+
+// Remove specific todo by id
+
