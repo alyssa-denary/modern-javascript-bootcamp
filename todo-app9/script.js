@@ -39,6 +39,7 @@ document
   .addEventListener("submit", function (e) {
     e.preventDefault();
     const newToDoObj = {
+      id: uuidv4(),
       text: e.target.elements.newToDo.value,
       completed: false,
     };
