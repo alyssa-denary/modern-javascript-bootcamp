@@ -24,10 +24,18 @@ function filterNotes(arrOfObj, string) {
 
 // Generate note on DOM
 function generateNoteDOM(obj) {
-  const newPar = document.createElement("p");
-  newPar.textContent = `${obj.title}: ${obj.body}`;
-  newPar.className = "note";
-  document.querySelector("#all-notes").appendChild(newPar);
+  const newSection = document.createElement("section");
+
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "X";
+  newSection.appendChild(removeButton);
+
+  const newArticle = document.createElement("article");
+  newArticle.textContent = `${obj.title}: ${obj.body}`;
+  newArticle.setAttribute("class", "note");
+  newSection.appendChild(newArticle);
+
+  document.querySelector("#all-notes").appendChild(newSection);
 }
 
 // Render note to DOM
