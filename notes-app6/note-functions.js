@@ -29,10 +29,12 @@ function generateNoteDOM(obj) {
   const removeButton = document.createElement("button");
   removeButton.textContent = "X";
   newSection.appendChild(removeButton);
+  
   removeButton.addEventListener("click", () => {
     removeNote(obj.id);
+    const filtered = filterNotes(notes, userInput.searchText);
     clearSection("#all-notes");
-    renderNote(getSavedNotes());
+    renderNote(filtered);
   });
 
   const newArticle = document.createElement("article");

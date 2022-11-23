@@ -1,12 +1,15 @@
 const notes = getSavedNotes();
 
+const userInput = { searchText: "" };
+
 // Render all notes to start
 renderNote(notes);
 
 // Search form listener
 document.querySelector("#search-form").addEventListener("input", function (e) {
+  userInput.searchText = e.target.value;
   clearSection("#all-notes");
-  renderNote(filterNotes(notes, e.target.value));
+  renderNote(filterNotes(notes, userInput.searchText));
 });
 
 // Create new note submit listener
@@ -21,8 +24,9 @@ document
     };
     notes.push(newNote);
     saveNote(notes);
+    let filtered = filterNotes(notes, userInput.searchText);
     clearSection("#all-notes");
-    renderNote(notes);
+    renderNote(filtered);
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
   });
