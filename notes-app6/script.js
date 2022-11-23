@@ -15,6 +15,7 @@ document
   .addEventListener("submit", function (e) {
     e.preventDefault();
     const newNote = {
+      id: uuidv4(),
       title: e.target.elements.title.value,
       body: e.target.elements.body.value,
     };
