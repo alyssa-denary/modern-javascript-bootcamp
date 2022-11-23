@@ -29,6 +29,11 @@ function generateNoteDOM(obj) {
   const removeButton = document.createElement("button");
   removeButton.textContent = "X";
   newSection.appendChild(removeButton);
+  removeButton.addEventListener("click", () => {
+    removeNote(obj.id);
+    clearSection("#all-notes");
+    renderNote(getSavedNotes());
+  });
 
   const newArticle = document.createElement("article");
   newArticle.textContent = `${obj.title}: ${obj.body}`;
@@ -48,4 +53,15 @@ function renderNote(arrOfObj) {
 // Remove all notes from an html section
 function clearSection(selector) {
   document.querySelector(selector).innerHTML = "";
+}
+
+// Remove specific note by id
+function removeNote(identifier) {
+  const notes = getSavedNotes();
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].id === identifier) {
+      notes.splice(i, 1);
+    }
+  }
+  saveNote(notes);
 }
