@@ -57,7 +57,6 @@ function clearSection(selector) {
 
 // Remove specific note by id
 function removeNote(identifier) {
-  const notes = getSavedNotes();
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].id === identifier) {
       notes.splice(i, 1);
