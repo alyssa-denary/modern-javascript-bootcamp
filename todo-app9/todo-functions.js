@@ -1,5 +1,5 @@
 // Get saved todos
-const getSavedToDos = function () {
+const getSavedTodos = function () {
   const todosJSON = localStorage.getItem("todos");
   if (todosJSON !== null) {
     return JSON.parse(todosJSON);
@@ -9,12 +9,12 @@ const getSavedToDos = function () {
 };
 
 // Save todos in local storage
-const saveToDos = function (todos) {
+const saveTodos = function (todos) {
   localStorage.setItem("todos", JSON.stringify(todos));
 };
 
 // Filter to-do items based on Text AND if hide completed is checked
-function filterToDo(arrOfObj, textFilter, hideVal) {
+function filterTodo(arrOfObj, textFilter, hideVal) {
   return arrOfObj.filter((obj) =>
     hideVal
       ? obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
@@ -24,7 +24,7 @@ function filterToDo(arrOfObj, textFilter, hideVal) {
 }
 
 // Generate todo DOM
-const generateToDoDOM = function (obj) {
+const generateTodoDOM = function (obj) {
   const newTask = document.createElement("li");
 
   const checkbox = document.createElement("input");
@@ -33,11 +33,11 @@ const generateToDoDOM = function (obj) {
   const button = document.createElement("button");
   button.textContent = "X";
   button.addEventListener("click", () => {
-    removeToDo(obj.id);
+    removeTodo(obj.id);
     clearSection("#todo-list");
-    let filtered = filterToDo(todos, userInput.searchText, userInput.hideVal);
+    let filtered = filterTodo(todos, userInput.searchText, userInput.hideVal);
     renderSummary(filtered);
-    renderToDoItems(filtered);
+    renderTodoItems(filtered);
   });
 
   newTask.appendChild(checkbox);
@@ -48,9 +48,9 @@ const generateToDoDOM = function (obj) {
 };
 
 // Render content to DOM
-function renderToDoItems(arrOfObj) {
+function renderTodoItems(arrOfObj) {
   arrOfObj.forEach((obj) => {
-    generateToDoDOM(obj);
+    generateTodoDOM(obj);
   });
 }
 
@@ -67,10 +67,10 @@ function clearSection(selector) {
 }
 
 // Remove specific todo by id
-function removeToDo(identifier) {
+function removeTodo(identifier) {
   const ind = todos.findIndex((el) => el.id === identifier);
   if (ind !== -1) {
     todos.splice(ind, 1);
   }
-  saveToDos(todos);
+  saveTodos(todos);
 }

@@ -1,5 +1,5 @@
 // Retrieve saved todos
-const todos = getSavedToDos();
+const todos = getSavedTodos();
 
 // Variable to hold user input
 const userInput = {
@@ -9,17 +9,17 @@ const userInput = {
 };
 
 // Render initial todos
-let filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+let filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
 renderSummary(filtered);
-renderToDoItems(filtered);
+renderTodoItems(filtered);
 
 // Listener for search text changes:
 document.querySelector("#search-input").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
   clearSection("#todo-list");
-  filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+  filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
   renderSummary(filtered);
-  renderToDoItems(filtered);
+  renderTodoItems(filtered);
 });
 
 // Listener for changes to hiding completed checkbox:
@@ -28,28 +28,28 @@ document
   .addEventListener("change", function (e) {
     userInput.hideCompleted = !userInput.hideCompleted;
     clearSection("#todo-list");
-    filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+    filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
     renderSummary(filtered);
-    renderToDoItems(filtered);
+    renderTodoItems(filtered);
   });
 
 // Listener for submit button to add a new to-do
 document
-  .querySelector("#new-to-do-form")
+  .querySelector("#new-todo-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    const newToDoObj = {
+    const newTodoObj = {
       id: uuidv4(),
-      text: e.target.elements.newToDo.value,
+      text: e.target.elements.newTodo.value,
       completed: false,
     };
-    todos.push(newToDoObj);
-    saveToDos(todos);
+    todos.push(newTodoObj);
+    saveTodos(todos);
     clearSection("#todo-list");
-    filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
+    filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
     renderSummary(filtered);
-    renderToDoItems(filtered);
-    e.target.elements.newToDo.value = "";
+    renderTodoItems(filtered);
+    e.target.elements.newTodo.value = "";
   });
 
 // Listener for checkbox to change completed value
