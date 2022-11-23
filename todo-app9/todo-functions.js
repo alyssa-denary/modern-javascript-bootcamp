@@ -1,5 +1,5 @@
 // Get saved todos
-const getSavedTodos = function () {
+const getSavedToDos = function () {
   const todosJSON = localStorage.getItem("todos");
   if (todosJSON !== null) {
     return JSON.parse(todosJSON);
@@ -9,7 +9,7 @@ const getSavedTodos = function () {
 };
 
 // Save todos in local storage
-const saveTodos = function (todos) {
+const saveToDos = function (todos) {
   localStorage.setItem("todos", JSON.stringify(todos));
 };
 
@@ -24,7 +24,7 @@ function filterToDo(arrOfObj, textFilter, hideVal) {
 }
 
 // Generate todo DOM
-const generateTodoDOM = function (obj) {
+const generateToDoDOM = function (obj) {
   const newTask = document.createElement("li");
 
   const checkbox = document.createElement("input");
@@ -33,7 +33,11 @@ const generateTodoDOM = function (obj) {
   const button = document.createElement("button");
   button.textContent = "X";
   button.addEventListener("click", () => {
-    removeToDos(obj.id);
+    removeToDo(obj.id);
+    clearSection("#todo-list");
+    let filtered = filterToDo(todos, userInput.searchText, userInput.hideVal);
+    renderSummary(filtered);
+    renderToDoItems(filtered);
   });
 
   newTask.appendChild(checkbox);
@@ -46,7 +50,7 @@ const generateTodoDOM = function (obj) {
 // Render content to DOM
 function renderToDoItems(arrOfObj) {
   arrOfObj.forEach((obj) => {
-    generateTodoDOM(obj);
+    generateToDoDOM(obj);
   });
 }
 
@@ -63,4 +67,10 @@ function clearSection(selector) {
 }
 
 // Remove specific todo by id
-
+function removeToDo(identifier) {
+  const ind = todos.findIndex((el) => el.id === identifier);
+  if (ind !== -1) {
+    todos.splice(ind, 1);
+  }
+  saveToDos(todos);
+}

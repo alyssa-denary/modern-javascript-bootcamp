@@ -1,5 +1,5 @@
 // Retrieve saved todos
-const todos = getSavedTodos();
+const todos = getSavedToDos();
 
 // Variable to hold user input
 const userInput = {
@@ -44,7 +44,7 @@ document
       completed: false,
     };
     todos.push(newToDoObj);
-    saveTodos(todos);
+    saveToDos(todos);
     clearSection("#todo-list");
     filtered = filterToDo(todos, userInput.searchText, userInput.hideCompleted);
     renderSummary(filtered);
