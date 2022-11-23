@@ -27,4 +27,6 @@ document
   });
 
 // Dropdown listener
-document.querySelector("");
+document.querySelector("#sort-dropdown").addEventListener("change", (e) => {
+  console.log(e.target.value);
+});

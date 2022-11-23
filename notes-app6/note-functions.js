@@ -1,3 +1,5 @@
+console.log(uuidv4);
+
 // Read existing notes from localStorage
 function getSavedNotes() {
   const notesJSON = localStorage.getItem("notes");
@@ -8,7 +10,7 @@ function getSavedNotes() {
   }
 }
 
-function saveNote (notes) {
+function saveNote(notes) {
   localStorage.setItem("notes", JSON.stringify(notes));
 }
 
