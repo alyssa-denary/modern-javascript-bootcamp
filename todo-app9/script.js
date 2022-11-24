@@ -5,7 +5,7 @@ const todos = getSavedTodos();
 const userInput = {
   newTask: "",
   searchText: "",
-  hideCompleted: false,
+  hideCompleted: getHideVal(),
 };
 
 // Render initial todos
@@ -21,7 +21,8 @@ document.querySelector("#search-input").addEventListener("input", function (e) {
 document
   .querySelector("#hide-completed")
   .addEventListener("change", function (e) {
-    userInput.hideCompleted = !userInput.hideCompleted;
+    userInput.hideCompleted = e.target.checked;
+    saveHideVal(userInput.hideCompleted);
     renderFilteredTodos();
   });
 
@@ -40,4 +41,3 @@ document
     renderFilteredTodos();
     e.target.elements.newTodo.value = "";
   });
-

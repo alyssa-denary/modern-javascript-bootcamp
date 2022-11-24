@@ -13,10 +13,25 @@ const saveTodos = function (todos) {
   localStorage.setItem("todos", JSON.stringify(todos));
 };
 
+// Update hideVal based on checked status
+const getHideVal = () => {
+  const hideValJSON = localStorage.getItem("hideVal");
+  if (hideValJSON !== null) {
+    return JSON.parse(hideValJSON);
+  } else {
+    return false;
+  }
+};
+
+// Save hideVal in localStorage
+const saveHideVal = (val) => {
+  localStorage.setItem("hideVal", JSON.stringify(val));
+};
+
 // Filter to-do items based on Text AND if hide completed is checked
-function filterTodo(arrOfObj, textFilter, hideVal) {
+function filterTodo(arrOfObj, textFilter, isHidden) {
   return arrOfObj.filter((obj) =>
-    hideVal
+    isHidden
       ? obj.text.toLowerCase().includes(textFilter.toLowerCase()) &&
         obj.completed === false
       : obj.text.toLowerCase().includes(textFilter.toLowerCase())
@@ -66,7 +81,11 @@ function renderSummary(array) {
 }
 
 function renderFilteredTodos() {
-  let filtered = filterTodo(todos, userInput.searchText, userInput.hideVal);
+  let filtered = filterTodo(
+    todos,
+    userInput.searchText,
+    userInput.hideCompleted
+  );
   clearSection("#todo-list");
   renderSummary(filtered);
   renderTodoItems(filtered);
