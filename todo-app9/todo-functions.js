@@ -33,9 +33,7 @@ const generateTodoDOM = function (obj) {
     obj.completed = !obj.completed;
     saveTodos(todos);
   });
-  if (obj.completed === true) {
-    checkbox.setAttribute("checked", "checked");
-  }
+  checkbox.checked = obj.completed;
 
   const button = document.createElement("button");
   button.textContent = "X";
