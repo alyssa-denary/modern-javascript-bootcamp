@@ -28,7 +28,14 @@ const generateTodoDOM = function (obj) {
   const newTask = document.createElement("li");
 
   const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.addEventListener("change", (e) => {
+    obj.completed = !obj.completed;
+    saveTodos(todos);
+  });
+  if (obj.completed === true) {
+    checkbox.setAttribute("checked", "checked");
+  }
 
   const button = document.createElement("button");
   button.textContent = "X";
