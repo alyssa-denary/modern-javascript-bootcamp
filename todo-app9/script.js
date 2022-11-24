@@ -41,11 +41,3 @@ document
     e.target.elements.newTodo.value = "";
   });
 
-// Listener for checkbox to change completed value
-const allTodos = document.querySelectorAll("#todo-list li input");
-allTodos.forEach((el) => {
-  el.addEventListener("change", (e) => {
-    console.log(e);
-    console.log(el);
-  });
-});
