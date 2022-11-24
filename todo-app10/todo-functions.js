@@ -45,7 +45,7 @@ const generateTodoDOM = function (obj) {
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.addEventListener("change", (e) => {
-    obj.completed = !obj.completed; // ADD TOGGLE FUNCTION BY ID in NEXT VERSION, QUESTION: WHY DOES THIS WAY STILL WORK?
+    obj.completed = !obj.completed; //// ADD TOGGLE FUNCTION BY ID
     saveTodos(todos);
     renderFilteredTodos(todos);
   });

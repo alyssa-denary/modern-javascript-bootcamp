@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>To-do App9: Checkbox & Delete Features</title>
+  </head>
+  <body>
+    <h1>To-do's:</h1>
+    <label
+      >Search To-Do Items:
+      <input id="search-input" type="text" placeholder="Type text to search" />
+    </label>
+    <label
+      ><input
+        id="hide-completed"
+        type="checkbox"
+        name="task-completion"
+        value="completed"
+      />Hide completed</label
+    >
+    <h2 id="summary"></h2>
+    <section id="all-todos">
+      <ul id="todo-list"></ul>
+    </section>
+    <form id="new-todo-form">
+      <input type="text" placeholder="Enter task" name="newTodo" required />
+      <button type="submit">Submit</button>
+    </form>
+    <script src="uuidv4.js"></script>
+    <script src="todo-functions.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
