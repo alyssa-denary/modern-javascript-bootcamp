@@ -32,6 +32,7 @@ const generateTodoDOM = function (obj) {
   checkbox.addEventListener("change", (e) => {
     obj.completed = !obj.completed;
     saveTodos(todos);
+    renderFilteredTodos(todos);
   });
   checkbox.checked = obj.completed;
 
@@ -58,9 +59,10 @@ function renderTodoItems(arrOfObj) {
 
 // Renders summary to DOM
 function renderSummary(array) {
+  let incomplete = array.filter((el) => !el.completed);
   document.querySelector(
     "#summary"
-  ).textContent = `You have ${array.length} to-do's left`;
+  ).textContent = `You have ${incomplete.length} to-do's left`;
 }
 
 function renderFilteredTodos() {
