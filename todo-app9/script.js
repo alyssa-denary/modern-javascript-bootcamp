@@ -9,17 +9,12 @@ const userInput = {
 };
 
 // Render initial todos
-let filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
-renderSummary(filtered);
-renderTodoItems(filtered);
+renderFilteredTodos();
 
 // Listener for search text changes:
 document.querySelector("#search-input").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
-  clearSection("#todo-list");
-  filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
-  renderSummary(filtered);
-  renderTodoItems(filtered);
+  renderFilteredTodos();
 });
 
 // Listener for changes to hiding completed checkbox:
@@ -27,10 +22,7 @@ document
   .querySelector("#hide-completed")
   .addEventListener("change", function (e) {
     userInput.hideCompleted = !userInput.hideCompleted;
-    clearSection("#todo-list");
-    filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
-    renderSummary(filtered);
-    renderTodoItems(filtered);
+    renderFilteredTodos();
   });
 
 // Listener for submit button to add a new to-do
@@ -45,10 +37,7 @@ document
     };
     todos.push(newTodoObj);
     saveTodos(todos);
-    clearSection("#todo-list");
-    filtered = filterTodo(todos, userInput.searchText, userInput.hideCompleted);
-    renderSummary(filtered);
-    renderTodoItems(filtered);
+    renderFilteredTodos();
     e.target.elements.newTodo.value = "";
   });
 

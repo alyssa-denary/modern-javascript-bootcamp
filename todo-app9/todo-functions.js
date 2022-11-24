@@ -41,10 +41,7 @@ const generateTodoDOM = function (obj) {
   button.textContent = "X";
   button.addEventListener("click", () => {
     removeTodo(obj.id);
-    clearSection("#todo-list");
-    let filtered = filterTodo(todos, userInput.searchText, userInput.hideVal);
-    renderSummary(filtered);
-    renderTodoItems(filtered);
+    renderFilteredTodos();
   });
 
   newTask.appendChild(checkbox);
@@ -66,6 +63,13 @@ function renderSummary(array) {
   document.querySelector(
     "#summary"
   ).textContent = `You have ${array.length} to-do's left`;
+}
+
+function renderFilteredTodos() {
+  let filtered = filterTodo(todos, userInput.searchText, userInput.hideVal);
+  clearSection("#todo-list");
+  renderSummary(filtered);
+  renderTodoItems(filtered);
 }
 
 // Removes all elements from a section
