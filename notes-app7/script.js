@@ -25,7 +25,7 @@ document
     saveNote(notes);
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
-    location.assign("edit.html");
+    location.assign(`edit.html#${newNote.id}`);
   });
 
 // Dropdown listener
