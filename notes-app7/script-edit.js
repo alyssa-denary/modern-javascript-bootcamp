@@ -3,7 +3,7 @@ const notes = getSavedNotes();
 const note = notes.find((el) => el.id === noteID);
 
 if (note === undefined) {
-  location.assign(index.html);
+  location.assign("index.html");
 }
 
 document.querySelector("#note-title").value = note.title;
@@ -17,4 +17,10 @@ document.querySelector("#note-title").addEventListener("input", (e) => {
 document.querySelector("#note-body").addEventListener("input", (e) => {
   note.body = e.target.value;
   saveNote(notes);
+});
+
+document.querySelector("#remove-note").addEventListener("click", (e) => {
+  removeNote(note.id);
+  saveNote(notes);
+  location.assign("index.html");
 });
