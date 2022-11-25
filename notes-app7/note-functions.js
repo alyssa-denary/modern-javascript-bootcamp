@@ -36,7 +36,10 @@ function generateNoteDOM(obj) {
   });
 
   const newArticle = document.createElement("article");
-  newArticle.textContent = `${obj.title}: ${obj.body}`;
+  const newLink = document.createElement("a");
+  newLink.textContent = `${obj.title}: ${obj.body}`;
+  newLink.setAttribute("href", "edit.html");
+  newArticle.append(newLink);
   newArticle.setAttribute("class", "note");
   newSection.appendChild(newArticle);
 
