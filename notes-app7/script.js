@@ -26,6 +26,7 @@ document
     renderFilteredNotes();
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
+    location.assign("edit.html");
   });
 
 // Dropdown listener
