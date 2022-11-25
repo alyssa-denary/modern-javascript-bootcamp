@@ -23,7 +23,6 @@ document
     };
     notes.push(newNote);
     saveNote(notes);
-    renderFilteredNotes();
     e.target.elements.title.value = "";
     e.target.elements.body.value = "";
     location.assign("edit.html");
