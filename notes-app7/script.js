@@ -18,13 +18,11 @@ document
     e.preventDefault();
     const newNote = {
       id: uuidv4(),
-      title: e.target.elements.title.value,
-      body: e.target.elements.body.value,
+      title: "",
+      body: "",
     };
     notes.push(newNote);
     saveNote(notes);
-    e.target.elements.title.value = "";
-    e.target.elements.body.value = "";
     location.assign(`edit.html#${newNote.id}`);
   });
 
