@@ -45,7 +45,7 @@ const generateTodoDOM = function (obj) {
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.addEventListener("change", (e) => {
-    obj.completed = !obj.completed; //// ADD TOGGLE FUNCTION BY ID
+    toggleCompleted(obj.id);
     saveTodos(todos);
     renderFilteredTodos(todos);
   });
@@ -103,4 +103,12 @@ function removeTodo(identifier) {
     todos.splice(ind, 1);
   }
   saveTodos(todos);
+}
+
+// Toggle completed status by id
+function toggleCompleted(identifier) {
+  const match = todos.find((el) => el.id === identifier);
+  if (match !== undefined) {
+    match.completed = !match.completed;
+  }
 }
