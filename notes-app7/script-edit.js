@@ -6,19 +6,25 @@ if (note === undefined) {
   location.assign("index.html");
 }
 
-document.querySelector("#note-title").value = note.title;
-document.querySelector("#note-body").value = note.body;
+const noteTitle = document.querySelector("#note-title");
+const noteBody = document.querySelector("#note-body");
 
-document.querySelector("#note-title").addEventListener("input", (e) => {
+// Initialize displayed value as current title and body
+noteTitle.value = note.title;
+noteBody.value = note.body;
+
+// Event listeners to update and save new note title and body
+noteTitle.addEventListener("input", (e) => {
   note.title = e.target.value;
   saveNote(notes);
 });
 
-document.querySelector("#note-body").addEventListener("input", (e) => {
+noteBody.addEventListener("input", (e) => {
   note.body = e.target.value;
   saveNote(notes);
 });
 
+// Event listener for remove note button, also returns user to homepage
 document.querySelector("#remove-note").addEventListener("click", (e) => {
   removeNote(note.id);
   saveNote(notes);
