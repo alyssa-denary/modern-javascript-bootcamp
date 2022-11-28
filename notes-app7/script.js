@@ -1,4 +1,4 @@
-const notes = getSavedNotes();
+let notes = getSavedNotes();
 
 const userInput = { searchText: "" };
 
@@ -29,4 +29,13 @@ document
 // Dropdown listener
 document.querySelector("#sort-dropdown").addEventListener("change", (e) => {
   console.log(e.target.value);
+});
+
+// Global storage listener
+window.addEventListener("storage", (e) => {
+  if (e.key === "notes") {
+    notes = JSON.parse(e.newValue);
+    saveNote(notes);
+    renderFilteredNotes();
+  }
 });
