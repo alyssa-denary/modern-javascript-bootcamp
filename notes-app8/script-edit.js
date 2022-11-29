@@ -7,22 +7,30 @@ if (note === undefined) {
 }
 
 const noteTitle = document.querySelector("#note-title");
+const editedTime = document.querySelector("#time-last-edited");
 const noteBody = document.querySelector("#note-body");
 
 // Initialize displayed value as current title and body
 noteTitle.value = note.title;
 noteBody.value = note.body;
 
+// Initialize last edited time
+editedTime.append(`Last edited ${moment(note.updatedAt).fromNow()}`);
+
 // Event listeners to update and save new note title and body
 noteTitle.addEventListener("input", (e) => {
   note.title = e.target.value;
   note.updatedAt = moment().valueOf();
+  editedTime.innerHTML = "";
+  editedTime.append(`Last edited ${moment(note.updatedAt).fromNow()}`);
   saveNote(notes);
 });
 
 noteBody.addEventListener("input", (e) => {
   note.body = e.target.value;
   note.updatedAt = moment().valueOf();
+  editedTime.innerHTML = "";
+  editedTime.append(`Last edited ${moment(note.updatedAt).fromNow()}`);
   saveNote(notes);
 });
 
@@ -44,5 +52,7 @@ window.addEventListener("storage", (e) => {
 
     noteTitle.value = note.title;
     noteBody.value = note.body;
+    editedTime.innerHTML = "";
+    editedTime.append(`Last edited ${moment(note.updatedAt).fromNow()}`);
   }
 });
