@@ -16,13 +16,13 @@ noteBody.value = note.body;
 // Event listeners to update and save new note title and body
 noteTitle.addEventListener("input", (e) => {
   note.title = e.target.value;
-  note.updatedAt = moment();
+  note.updatedAt = moment().valueOf();
   saveNote(notes);
 });
 
 noteBody.addEventListener("input", (e) => {
   note.body = e.target.value;
-  note.updatedAt = moment();
+  note.updatedAt = moment().valueOf();
   saveNote(notes);
 });
 

@@ -16,12 +16,13 @@ document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
+    const timestamp = moment().valueOf();
     const newNote = {
       id: uuidv4(),
       title: "",
       body: "",
-      createdAt: moment(),
-      updatedAt: moment(),
+      createdAt: timestamp,
+      updatedAt: timestamp,
     };
     notes.push(newNote);
     saveNote(notes);
