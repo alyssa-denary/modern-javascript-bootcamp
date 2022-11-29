@@ -20,6 +20,8 @@ document
       id: uuidv4(),
       title: "",
       body: "",
+      createdAt: moment(),
+      updatedAt: moment(),
     };
     notes.push(newNote);
     saveNote(notes);
@@ -39,5 +41,3 @@ window.addEventListener("storage", (e) => {
     renderFilteredNotes();
   }
 });
-
-
