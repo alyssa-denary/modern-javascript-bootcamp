@@ -37,7 +37,7 @@ function generateNoteDOM(obj) {
 
   const newArticle = document.createElement("article");
   const newLink = document.createElement("a");
-  newLink.textContent = `${obj.title}: ${obj.body}`;
+  newLink.textContent = `${obj.title}`;
   newLink.setAttribute("href", `edit.html#${obj.id}`);
   newArticle.append(newLink);
   newArticle.setAttribute("class", "note");
@@ -72,4 +72,9 @@ function removeNote(identifier) {
     }
   }
   saveNote(notes);
+}
+
+// Render last edited string
+function showLastEdited(timestamp) {
+  return `Last edited ${moment(timestamp).fromNow()}`;
 }
