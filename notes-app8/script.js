@@ -1,14 +1,14 @@
 let notes = getSavedNotes();
 
-const userInput = { searchText: "" };
+const userInput = { searchText: "", sortBy: "byEdited" };
 
 // Render all notes to start
-renderFilteredNotes();
+renderFilteredNotes(userInput.sortBy);
 
 // Search form listener
 document.querySelector("#search-form").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
-  renderFilteredNotes();
+  renderFilteredNotes(userInput.sortBy);
 });
 
 // Create new note submit listener
@@ -31,7 +31,8 @@ document
 
 // Dropdown listener
 document.querySelector("#sort-dropdown").addEventListener("change", (e) => {
-  console.log(e.target.value);
+  userInput.sortBy = e.target.value;
+  renderFilteredNotes(e.target.value);
 });
 
 // Global storage listener
@@ -39,6 +40,6 @@ window.addEventListener("storage", (e) => {
   if (e.key === "notes") {
     notes = JSON.parse(e.newValue);
     saveNote(notes);
-    renderFilteredNotes();
+    renderFilteredNotes(userInput.sortBy);
   }
 });

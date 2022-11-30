@@ -22,6 +22,46 @@ function filterNotes(arrOfObj, string) {
   });
 }
 
+// Sort notes
+function sortNotes(array, keyword) {
+  let cb;
+  // if sorting by last edited, sort by updatedAt timestamp dates
+  if (keyword === "byEdited") {
+    cb = (a, b) => {
+      if (a.updatedAt < b.updatedAt) {
+        return -1;
+      } else if (a.updatedAt > b.updatedAt) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+  } else if (keyword === "byRecent") {
+    // if sorting by recently created, sort by createdAt date
+    cb = (a, b) => {
+      if (a.createdAt > b.createdAt) {
+        return -1;
+      } else if (a.createdAt < b.createdAt) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+  } else if (keyword === "byAlphabetical") {
+    // if sorting alphabetically, sort by title name
+    cb = (a, b) => {
+      if (a.title.toLowerCase() < b.title.toLowerCase()) {
+        return -1;
+      } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+  }
+  return array.sort(cb);
+}
+
 // Generate note on DOM
 function generateNoteDOM(obj) {
   const newSection = document.createElement("section");
@@ -53,10 +93,11 @@ function renderNote(arrOfObj) {
   }
 }
 
-function renderFilteredNotes() {
+function renderFilteredNotes(keyword) {
   const filtered = filterNotes(notes, userInput.searchText);
+  const sorted = sortNotes(filtered, keyword);
   clearSection("#all-notes");
-  renderNote(filtered);
+  renderNote(sorted);
 }
 
 // Remove all notes from an html section
