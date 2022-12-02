@@ -1,14 +1,18 @@
-let notes = getSavedNotes();
+import * as Utils from "./utils";
 
-const userInput = { searchText: "", sortBy: "byEdited" };
+export let notes = Utils.getSavedNotes();
+
+console.log(notes);
+
+export const userInput = { searchText: "", sortBy: "byEdited" };
 
 // Render all notes to start
-renderFilteredNotes(userInput.sortBy);
+Utils.renderFilteredNotes(userInput.sortBy);
 
 // Search form listener
 document.querySelector("#search-form").addEventListener("input", function (e) {
   userInput.searchText = e.target.value;
-  renderFilteredNotes(userInput.sortBy);
+  Utils.renderFilteredNotes(userInput.sortBy);
 });
 
 // Create new note submit listener
@@ -25,21 +29,21 @@ document
       updatedAt: timestamp,
     };
     notes.push(newNote);
-    saveNote(notes);
+    Utils.saveNote(notes);
     location.assign(`edit.html#${newNote.id}`);
   });
 
 // Dropdown listener
 document.querySelector("#sort-dropdown").addEventListener("change", (e) => {
   userInput.sortBy = e.target.value;
-  renderFilteredNotes(e.target.value);
+  Utils.renderFilteredNotes(e.target.value);
 });
 
 // Global storage listener
 window.addEventListener("storage", (e) => {
   if (e.key === "notes") {
     notes = JSON.parse(e.newValue);
-    saveNote(notes);
-    renderFilteredNotes(userInput.sortBy);
+    Utils.saveNote(notes);
+    Utils.renderFilteredNotes(userInput.sortBy);
   }
 });

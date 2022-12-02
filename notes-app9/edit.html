@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./utils.js">
+      import * as Utils from "./utils";
+    </script>
+    <script type="module" src="./script.js">
+      import * as Script from "./script.js";
+    </script>
     <title>Note Editing</title>
   </head>
   <body>
@@ -23,7 +29,7 @@
     ></textarea>
     <button id="remove-note">Remove Note</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
-    <script src="note-functions.js"></script>
-    <script src="script-edit.js"></script>
+    <!-- <script src="./utils.js"></script>
+    <script src="script-edit.js"></script> -->
   </body>
 </html>

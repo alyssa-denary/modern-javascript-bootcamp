@@ -1,5 +1,5 @@
 // Read existing notes from localStorage
-function getSavedNotes() {
+export function getSavedNotes() {
   let notesJSON = localStorage.getItem("notes");
   if (notesJSON !== null) {
     return JSON.parse(notesJSON);
@@ -8,12 +8,12 @@ function getSavedNotes() {
   }
 }
 
-function saveNote(notes) {
+export function saveNote(notes) {
   localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 // Filter notes that include string in title or body of note
-function filterNotes(arrOfObj, string) {
+export function filterNotes(arrOfObj, string) {
   return arrOfObj.filter((noteObj) => {
     return (
       noteObj.title.toLowerCase().includes(string.toLowerCase()) ||
@@ -23,7 +23,7 @@ function filterNotes(arrOfObj, string) {
 }
 
 // Sort notes
-function sortNotes(array, keyword) {
+export function sortNotes(array, keyword) {
   let cb;
   // if sorting by last edited, sort by updatedAt timestamp dates
   if (keyword === "byEdited") {
@@ -63,7 +63,7 @@ function sortNotes(array, keyword) {
 }
 
 // Generate note on DOM
-function generateNoteDOM(obj) {
+export function generateNoteDOM(obj) {
   const newSection = document.createElement("section");
 
   const removeButton = document.createElement("button");
@@ -87,13 +87,13 @@ function generateNoteDOM(obj) {
 }
 
 // Render note to DOM
-function renderNote(arrOfObj) {
+export function renderNote(arrOfObj) {
   for (const obj of arrOfObj) {
     generateNoteDOM(obj);
   }
 }
 
-function renderFilteredNotes(keyword) {
+export function renderFilteredNotes(keyword) {
   const filtered = filterNotes(notes, userInput.searchText);
   const sorted = sortNotes(filtered, keyword);
   clearSection("#all-notes");
@@ -101,12 +101,12 @@ function renderFilteredNotes(keyword) {
 }
 
 // Remove all notes from an html section
-function clearSection(selector) {
+export function clearSection(selector) {
   document.querySelector(selector).innerHTML = "";
 }
 
 // Remove specific note by id
-function removeNote(identifier) {
+export function removeNote(identifier) {
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].id === identifier) {
       notes.splice(i, 1);
@@ -116,6 +116,6 @@ function removeNote(identifier) {
 }
 
 // Render last edited string
-function showLastEdited(timestamp) {
+export function showLastEdited(timestamp) {
   return `Last edited ${moment(timestamp).fromNow()}`;
 }
