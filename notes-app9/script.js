@@ -34,6 +34,7 @@ document
 // Dropdown listener
 document.querySelector("#sort-dropdown").addEventListener("change", (e) => {
   userInput.sortBy = e.target.value;
+  notes = getSavedNotes();
   renderFilteredNotes(notes, userInput.searchText, userInput.sortBy);
 });
 
