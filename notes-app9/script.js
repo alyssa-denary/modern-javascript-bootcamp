@@ -13,7 +13,7 @@ document.querySelector("#search-form").addEventListener("input", function (e) {
   renderFilteredNotes(notes, userInput.searchText, userInput.sortBy);
 });
 
-// Create new note submit listener
+// Create note listener
 document
   .querySelector("#create-note-form")
   .addEventListener("submit", function (e) {

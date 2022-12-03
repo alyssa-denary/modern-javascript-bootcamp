@@ -63,7 +63,7 @@ export function sortNotes(array, keyword) {
 }
 
 // Generate note on DOM
-export function generateNoteDOM(obj) {
+export function generateNoteDOM(note, notes, searchText, sortBy) {
   const newSection = document.createElement("section");
 
   const removeButton = document.createElement("button");
@@ -71,14 +71,14 @@ export function generateNoteDOM(obj) {
   newSection.appendChild(removeButton);
 
   removeButton.addEventListener("click", () => {
-    removeNote(obj.id);
-    renderFilteredNotes();
+    removeNote(note.id, notes);
+    renderFilteredNotes(notes, searchText, sortBy);
   });
 
   const newArticle = document.createElement("article");
   const newLink = document.createElement("a");
-  newLink.textContent = `${obj.title}`;
-  newLink.setAttribute("href", `edit.html#${obj.id}`);
+  newLink.textContent = `${note.title}`;
+  newLink.setAttribute("href", `edit.html#${note.id}`);
   newArticle.append(newLink);
   newArticle.setAttribute("class", "note");
   newSection.appendChild(newArticle);
@@ -87,9 +87,9 @@ export function generateNoteDOM(obj) {
 }
 
 // Render note to DOM
-export function renderNote(arrOfObj) {
-  for (const obj of arrOfObj) {
-    generateNoteDOM(obj);
+export function renderNote(notes, searchText, sortBy) {
+  for (const note of notes) {
+    generateNoteDOM(note, notes, searchText, sortBy);
   }
 }
 
@@ -97,7 +97,7 @@ export function renderFilteredNotes(notes, searchText, sortBy) {
   const filtered = filterNotes(notes, searchText);
   const sorted = sortNotes(filtered, sortBy);
   clearSection("#all-notes");
-  renderNote(sorted);
+  renderNote(sorted, searchText, sortBy);
 }
 
 // Remove all notes from an html section
@@ -106,7 +106,7 @@ export function clearSection(selector) {
 }
 
 // Remove specific note by id
-export function removeNote(identifier) {
+export function removeNote(identifier, notes) {
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].id === identifier) {
       notes.splice(i, 1);
