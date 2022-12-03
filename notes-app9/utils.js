@@ -93,9 +93,9 @@ export function renderNote(arrOfObj) {
   }
 }
 
-export function renderFilteredNotes(keyword) {
-  const filtered = filterNotes(notes, userInput.searchText);
-  const sorted = sortNotes(filtered, keyword);
+export function renderFilteredNotes(notes, searchText, sortBy) {
+  const filtered = filterNotes(notes, searchText);
+  const sorted = sortNotes(filtered, sortBy);
   clearSection("#all-notes");
   renderNote(sorted);
 }
