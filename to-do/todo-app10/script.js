@@ -1,3 +1,5 @@
+'use strict'
+
 // Retrieve saved todos
 const todos = getSavedTodos();
 

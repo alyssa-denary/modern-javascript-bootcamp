@@ -1,3 +1,5 @@
+"use strict";
+
 import { renderFilteredNotes, getSavedNotes, saveNote } from "./utils.js";
 
 let notes = getSavedNotes();

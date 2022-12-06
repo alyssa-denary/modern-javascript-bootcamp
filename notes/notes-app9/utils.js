@@ -1,3 +1,5 @@
+"use strict";
+
 // Read existing notes from localStorage
 export function getSavedNotes() {
   let notesJSON = localStorage.getItem("notes");

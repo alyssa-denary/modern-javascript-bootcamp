@@ -1,3 +1,5 @@
+"use strict";
+
 !(function (r) {
   if ("object" == typeof exports && "undefined" != typeof module)
     module.exports = r();
