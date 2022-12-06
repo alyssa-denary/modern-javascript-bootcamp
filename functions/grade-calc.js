@@ -22,22 +22,31 @@ const lettergrade = function (percent){
 
 // function letter grade calculator
 const gradeCalc = function(score, total){
+  if (typeof score === "number" && typeof total === "number") {
     const percent = percentCalculator(score, total);
     const grade = lettergrade(percent);
     return `You got a ${grade} (${percent}%)`
+  } else {
+    throw new Error("gradeCalc args must be numbers");
+  }
 }
 
 
-let tommyGrade = gradeCalc(60, 100);
-let susieGrade = gradeCalc(5, 10);
-let albertGrade = gradeCalc(93, 95);
-let bobGrade = gradeCalc(35, 50);
-let nanGrade = gradeCalc(4, 5);
+// let tommyGrade = gradeCalc(60, 100);
+// let susieGrade = gradeCalc(5, 10);
+// let albertGrade = gradeCalc(93, 95);
+// let bobGrade = gradeCalc(35, 50);
+// let nanGrade = gradeCalc(4, 5);
 
-console.log(tommyGrade);
-console.log(susieGrade);
-console.log(albertGrade);
-console.log(bobGrade);
-console.log(nanGrade);
+// console.log(tommyGrade); // You got a D (60%)
+// console.log(susieGrade);
+// console.log(albertGrade);
+// console.log(bobGrade);
+// console.log(nanGrade);
 
-
+try {
+  let tommyGrade = gradeCalc("60", 100);
+  console.log(tommyGrade);
+} catch (e) {
+  console.log(e.message);
+}
