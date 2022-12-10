@@ -1,6 +1,5 @@
-'use strict'
+"use strict";
 
-// Get saved todos
 const getSavedTodos = function () {
   const todosJSON = localStorage.getItem("todos");
   if (todosJSON !== null) {
@@ -10,12 +9,10 @@ const getSavedTodos = function () {
   }
 };
 
-// Save todos in local storage
 const saveTodos = function (todos) {
   localStorage.setItem("todos", JSON.stringify(todos));
 };
 
-// Update hideVal based on checked status
 const getHideVal = () => {
   const hideValJSON = localStorage.getItem("hideVal");
   if (hideValJSON !== null) {
@@ -25,7 +22,6 @@ const getHideVal = () => {
   }
 };
 
-// Save hideVal in localStorage
 const saveHideVal = (val) => {
   localStorage.setItem("hideVal", JSON.stringify(val));
 };
@@ -40,7 +36,6 @@ function filterTodo(arrOfObj, textFilter, isHidden) {
   );
 }
 
-// Generate todo DOM
 const generateTodoDOM = function (obj) {
   const newTask = document.createElement("li");
 
@@ -60,21 +55,22 @@ const generateTodoDOM = function (obj) {
     renderFilteredTodos();
   });
 
+  const text = document.createElement("span");
+  text.textContent = obj.text;
+
   newTask.appendChild(checkbox);
-  newTask.append(obj.text);
+  newTask.append(text);
   newTask.appendChild(button);
 
   document.querySelector("#todo-list").appendChild(newTask);
 };
 
-// Render content to DOM
 function renderTodoItems(arrOfObj) {
   arrOfObj.forEach((obj) => {
     generateTodoDOM(obj);
   });
 }
 
-// Renders summary to DOM
 function renderSummary(array) {
   let incomplete = array.filter((el) => !el.completed);
   document.querySelector(
@@ -93,12 +89,10 @@ function renderFilteredTodos() {
   renderTodoItems(filtered);
 }
 
-// Removes all elements from a section
 function clearSection(selector) {
   document.querySelector(selector).innerHTML = "";
 }
 
-// Remove specific todo by id
 function removeTodo(identifier) {
   const ind = todos.findIndex((el) => el.id === identifier);
   if (ind !== -1) {
@@ -107,7 +101,6 @@ function removeTodo(identifier) {
   saveTodos(todos);
 }
 
-// Toggle completed status by id
 function toggleCompleted(identifier) {
   const match = todos.find((el) => el.id === identifier);
   if (match !== undefined) {

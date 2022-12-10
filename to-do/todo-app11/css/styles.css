@@ -28,26 +28,34 @@ body {
   height: 75vh;
   margin: 0 auto; }
 
-.pad-vert {
-  padding-top: 1rem;
-  padding-bottom: 1rem; }
-
-.pad-input {
-  padding: 0.25rem 1rem 0.25rem 1rem; }
+#summary {
+  margin-left: 0.75rem; }
 
 .side-mar {
   margin-left: 0.5rem;
   margin-right: 0.5rem; }
+
+.pad-input {
+  padding: 0.25rem 1rem 0.25rem 1rem; }
+
+.pad-vert {
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
 
 .search {
   display: flex;
   align-items: center;
   justify-content: flex-start; }
 
-fieldset {
-  border: none;
-  display: flex; }
-
-label {
+.label {
   display: flex;
   align-items: center; }
+
+#all-todos ul {
+  list-style: none; }
+
+#all-todos ul li {
+  margin: 0.5rem 0; }
+
+#all-todos ul li span {
+  margin: 0.5rem; }
