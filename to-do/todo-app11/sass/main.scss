@@ -19,7 +19,7 @@ body {
   font-family: "Georgia", serif;
 }
 
-.main {
+.body {
   background-image: linear-gradient(
       to left,
       rgba($background-color1, 0.8),
@@ -36,6 +36,13 @@ body {
   font-size: 1.5rem;
   font-family: "Papyrus", fantasy;
   padding-top: 1rem;
+}
+
+.main {
+  background-color: rgba($color-white, 0.7);
+  width: 85vw;
+  height: 75vh;
+  margin: 0 auto;
 }
 
 fieldset {

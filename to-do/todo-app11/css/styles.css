@@ -11,7 +11,7 @@ html {
 body {
   font-family: "Georgia", serif; }
 
-.main {
+.body {
   background-image: linear-gradient(to left, rgba(15, 141, 232, 0.8), rgba(11, 219, 238, 0.8), rgba(96, 242, 181, 0.8)), url("https://images.squarespace-cdn.com/content/v1/56dc7a6820c647a2ce55e533/1490922056592-HPNM6WPT5IP9EISLWSWO/Instructional-courses-ascent-climbing-school.jpg");
   background-size: cover;
   height: 100vh; }
@@ -21,6 +21,12 @@ body {
   font-size: 1.5rem;
   font-family: "Papyrus", fantasy;
   padding-top: 1rem; }
+
+.main {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 85vw;
+  height: 75vh;
+  margin: 0 auto; }
 
 fieldset {
   border: none;
