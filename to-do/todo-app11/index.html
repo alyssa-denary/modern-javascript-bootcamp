@@ -12,21 +12,23 @@
   </head>
   <body class="body">
     <header class="header">
-      <h1 class="heading">To-do's:</h1>
+      <h1>To-do's:</h1>
     </header>
     <main class="main">
-      <section class="search">
-        <label
-          >Search To-Do Items:
+      <section class="search pad-vert">
+        <label class="pad-vert side-mar"
+          >Search:
           <input
             id="search-input"
+            class="side-mar pad-input"
             type="text"
             placeholder="Type text to search"
           />
         </label>
-        <label
+        <label class="pad-vert"
           ><input
             id="hide-completed"
+            class="side-mar"
             type="checkbox"
             name="task-completion"
             value="completed"
@@ -38,7 +40,13 @@
         <ul id="todo-list"></ul>
       </section>
       <form id="new-todo-form">
-        <input type="text" placeholder="Enter task" name="newTodo" required />
+        <input
+          class="pad-input"
+          type="text"
+          placeholder="Enter task"
+          name="newTodo"
+          required
+        />
         <button type="submit">Submit</button>
       </form>
     </main>
