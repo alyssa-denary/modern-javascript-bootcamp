@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 100%; }
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; }
+
+.main {
+  background-image: linear-gradient(to left, rgba(15, 141, 232, 0.8), rgba(11, 219, 238, 0.8), rgba(96, 242, 181, 0.8)), url("https://images.squarespace-cdn.com/content/v1/56dc7a6820c647a2ce55e533/1490922056592-HPNM6WPT5IP9EISLWSWO/Instructional-courses-ascent-climbing-school.jpg");
+  background-size: cover;
+  clip-path: polygon(3% 0, 100% 0%, 97% 100%, 0% 100%);
+  height: 100vh;
+  margin: 1rem; }
+
+fieldset {
+  border: none;
+  display: flex; }
+
+label {
+  display: flex;
+  align-items: center; }
