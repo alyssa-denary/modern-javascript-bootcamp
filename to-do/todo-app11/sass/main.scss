@@ -16,8 +16,7 @@ html {
 }
 
 body {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Georgia", serif;
 }
 
 .main {
@@ -29,9 +28,14 @@ body {
     ),
     url("https://images.squarespace-cdn.com/content/v1/56dc7a6820c647a2ce55e533/1490922056592-HPNM6WPT5IP9EISLWSWO/Instructional-courses-ascent-climbing-school.jpg");
   background-size: cover;
-  clip-path: polygon(3% 0, 100% 0%, 97% 100%, 0% 100%);
   height: 100vh;
-  margin: 1rem;
+}
+
+.header {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Papyrus", fantasy;
+  padding-top: 1rem;
 }
 
 fieldset {

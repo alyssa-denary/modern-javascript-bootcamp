@@ -12,27 +12,35 @@
   </head>
   <body>
     <main class="main">
-    <h1>To-do's:</h1>
-    <label
-      >Search To-Do Items:
-      <input id="search-input" type="text" placeholder="Type text to search" />
-    </label>
-    <label
-      ><input
-        id="hide-completed"
-        type="checkbox"
-        name="task-completion"
-        value="completed"
-      />Hide completed</label
-    >
-    <h2 id="summary"></h2>
-    <section id="all-todos">
-      <ul id="todo-list"></ul>
-    </section>
-    <form id="new-todo-form">
-      <input type="text" placeholder="Enter task" name="newTodo" required />
-      <button type="submit">Submit</button>
-    </form>
+      <header class="header">
+        <h1 class="heading">To-do's:</h1>
+      </header>
+      <section class="search">
+        <label
+          >Search To-Do Items:
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Type text to search"
+          />
+        </label>
+        <label
+          ><input
+            id="hide-completed"
+            type="checkbox"
+            name="task-completion"
+            value="completed"
+          />Hide completed</label
+        >
+      </section>
+      <h2 id="summary"></h2>
+      <section id="all-todos">
+        <ul id="todo-list"></ul>
+      </section>
+      <form id="new-todo-form">
+        <input type="text" placeholder="Enter task" name="newTodo" required />
+        <button type="submit">Submit</button>
+      </form>
     </main>
   </body>
 </html>
